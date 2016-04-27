@@ -151,6 +151,9 @@ typedef enum {
 /** 其他分页控件小圆标图片 */
 @property (nonatomic, strong) UIImage *pageDotImage;
 
+/** 分页控件距离底边的距离*/
+@property (nonatomic, assign) CGFloat pageControlBottom;
+
 /** 轮播文字label字体颜色 */
 @property (nonatomic, strong) UIColor *titleLabelTextColor;
 

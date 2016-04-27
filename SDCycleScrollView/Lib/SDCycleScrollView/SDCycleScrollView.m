@@ -90,6 +90,7 @@ NSString * const ID = @"cycleCell";
     _currentPageDotColor = [UIColor whiteColor];
     _pageDotColor = [UIColor lightGrayColor];
     _bannerImageViewContentMode = UIViewContentModeScaleToFill;
+    _pageControlBottom = 10;
     
     self.backgroundColor = [UIColor lightGrayColor];
     
@@ -474,7 +475,7 @@ NSString * const ID = @"cycleCell";
     if (self.pageControlAliment == SDCycleScrollViewPageContolAlimentRight) {
         x = self.mainView.sd_width - size.width - 10;
     }
-    CGFloat y = self.mainView.sd_height - size.height - 10;
+    CGFloat y = self.mainView.sd_height - size.height - self.pageControlBottom;
     
     if ([self.pageControl isKindOfClass:[TAPageControl class]]) {
         TAPageControl *pageControl = (TAPageControl *)_pageControl;
