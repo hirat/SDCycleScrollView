@@ -33,6 +33,9 @@
 #import "SDCollectionViewCell.h"
 #import "UIView+SDExtension.h"
 
+@interface SDCollectionViewCell ()
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
+@end
 @implementation SDCollectionViewCell
 {
     __weak UILabel *_titleLabel;
@@ -80,6 +83,13 @@
     _titleLabel = titleLabel;
     _titleLabel.hidden = YES;
     [self.contentView addSubview:titleLabel];
+    
+    _gradientLayer = [CAGradientLayer new];
+    _gradientLayer.colors = @[(__bridge id)[UIColor clearColor].CGColor,
+                              (__bridge id)[UIColor colorWithWhite: 0 alpha: 0.3].CGColor,
+                              (__bridge id)[UIColor colorWithWhite: 0 alpha: 0.4].CGColor,
+                              (__bridge id)[UIColor colorWithWhite: 0 alpha: 0.5].CGColor];
+    [_titleLabel.layer addSublayer: _gradientLayer];
 }
 
 - (void)setTitle:(NSString *)title
@@ -101,6 +111,12 @@
     CGFloat titleLabelY = self.sd_height - titleLabelH;
     _titleLabel.frame = CGRectMake(titleLabelX, titleLabelY, titleLabelW, titleLabelH);
     _titleLabel.hidden = !_titleLabel.text;
+    
+    _gradientLayer.frame = _titleLabel.bounds;
+    _gradientLayer.startPoint = CGPointMake(0, 0);
+    _gradientLayer.endPoint = CGPointMake(0, 1);
+    _gradientLayer.locations = @[@(0.1), @(0.5), @(0.75), @(1.0)];
+    
 }
 
 @end
